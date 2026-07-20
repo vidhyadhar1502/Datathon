@@ -1,0 +1,44 @@
+{
+    "_note": "One synthetic end-to-end FIR case, for demo/testing the data layer.",
+  
+    "CaseMaster": {
+      "CrimeNo": "104430006202600001",
+      "CaseNo": "202600001",
+      "CrimeRegisteredDate": "2026-01-15",
+      "PolicePersonID": 1,
+      "PoliceStationID": 1,
+      "CaseCategoryID": 1,
+      "GravityOffenceID": 2,
+      "CrimeMajorHeadID": 2,
+      "CrimeMinorHeadID": 4,
+      "CaseStatusID": 1,
+      "CourtID": 1,
+      "IncidentFromDate": "2026-01-14T20:00:00",
+      "IncidentToDate": "2026-01-14T21:30:00",
+      "InfoReceivedPSDate": "2026-01-15T09:00:00",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
+      "BriefFacts": "Sample synthetic case for demo purposes only — mobile phone reported stolen."
+    },
+  
+    "ComplainantDetails": {
+      "ComplainantName": "Demo Complainant",
+      "AgeYear": 34,
+      "OccupationID": 1,
+      "GenderID": 1
+    },
+  
+    "Accused": {
+      "AccusedName": "Unknown",
+      "AgeYear": null,
+      "GenderID": null,
+      "PersonID": "A1"
+    },
+  
+    "ActSectionAssociation": {
+      "ActID": "IPC",
+      "SectionID": "379",
+      "ActOrderID": 1,
+      "SectionOrderID": 1
+    }
+  }
