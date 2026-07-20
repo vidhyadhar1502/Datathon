@@ -1,0 +1,9 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "DRISHTI — Custom User Validation on signup (Basic I/O function)",
+  "main": "index.js",
+  "dependencies": {
+    "zcatalyst-sdk-node": "^3.1.0"
+  }
+}
