@@ -1,0 +1,11 @@
+{
+  "name": "analytics-service",
+  "version": "1.0.0",
+  "description": "DRISHTI — hotspot aggregation, crime trends, and QuickML-backed predictions",
+  "main": "index.js",
+  "dependencies": {
+    "zcatalyst-sdk-node": "^3.1.0",
+    "express": "^4.19.2",
+    "axios": "^1.7.2"
+  }
+}
