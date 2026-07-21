@@ -1,0 +1,10 @@
+{
+  "name": "network-service",
+  "version": "1.0.0",
+  "description": "DRISHTI — criminal network graph: co-accused + manual associations, BFS traversal",
+  "main": "index.js",
+  "dependencies": {
+    "zcatalyst-sdk-node": "^3.1.0",
+    "express": "^4.19.2"
+  }
+}

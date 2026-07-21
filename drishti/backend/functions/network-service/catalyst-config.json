@@ -1,0 +1,7 @@
+{
+  "deployment_config": {
+    "route_config": {
+      "base_url": "network-service"
+    }
+  }
+}
