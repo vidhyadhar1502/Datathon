@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { askAssistant } from '../api/assistantService';
+import styles from './ChatAssistant.module.css';
 
 /**
  * ChatAssistant
  * Simple chat UI for the conversational crime assistant. Voice input uses
  * the browser's native Web Speech API (SpeechRecognition) to convert
  * speech to text client-side — Zia's NLP (NER, intent) then runs
- * server-side on that transcript in assistant-service. This keeps voice
- * capture free and avoids needing an audio-upload pipeline for the demo.
+ * server-side on that transcript in assistant-service.
  */
 export default function ChatAssistant() {
   const [messages, setMessages] = useState([]);
@@ -56,45 +56,33 @@ export default function ChatAssistant() {
   }
 
   return (
-    <div style={{ maxWidth: 480, border: '1px solid #e5e7eb', borderRadius: 8, padding: 12 }}>
-      <div style={{ minHeight: 240, maxHeight: 360, overflowY: 'auto', marginBottom: 8 }}>
-        {messages.map((m, i) => (
-          <div
-            key={i}
-            style={{
-              textAlign: m.from === 'user' ? 'right' : 'left',
-              margin: '6px 0'
-            }}
-          >
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 10px',
-                borderRadius: 12,
-                background: m.from === 'user' ? '#1d4ed8' : '#f3f4f6',
-                color: m.from === 'user' ? '#fff' : '#111827',
-                fontSize: 14
-              }}
-            >
-              {m.text}
-            </span>
-          </div>
-        ))}
-        {loading && <p style={{ fontSize: 12, color: '#6b7280' }}>Thinking…</p>}
-      </div>
+    <div>
+      <p className={styles.sectionLabel}>Assistant</p>
+      <div className={styles.chatBox}>
+        <div className={styles.messages}>
+          {messages.map((m, i) => (
+            <div key={i} className={m.from === 'user' ? styles.messageRowUser : styles.messageRowAssistant}>
+              <span className={m.from === 'user' ? styles.bubbleUser : styles.bubbleAssistant}>
+                {m.text}
+              </span>
+            </div>
+          ))}
+          {loading && <p className={styles.thinking}>processing…</p>}
+        </div>
 
-      <div style={{ display: 'flex', gap: 8 }}>
-        <input
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && sendText(input)}
-          placeholder="Ask about a case, hotspot, trend, or network…"
-          style={{ flex: 1, padding: 8, borderRadius: 6, border: '1px solid #d1d5db' }}
-        />
-        <button onClick={() => sendText(input)} disabled={loading}>Send</button>
-        <button onClick={startVoiceInput} disabled={listening} title="Voice input">
-          {listening ? '🎙️…' : '🎙️'}
-        </button>
+        <div className={styles.inputRow}>
+          <input
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && sendText(input)}
+            placeholder="Ask about a case, hotspot, trend, or network…"
+            className={styles.textInput}
+          />
+          <button onClick={() => sendText(input)} disabled={loading} className={styles.sendButton}>Send</button>
+          <button onClick={startVoiceInput} disabled={listening} title="Voice input" className={styles.micButton}>
+            {listening ? '🎙️…' : '🎙️'}
+          </button>
+        </div>
       </div>
     </div>
   );

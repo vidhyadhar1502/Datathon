@@ -1,70 +1,70 @@
 {
-    "_note": "Synthetic data for local/dev seeding only. No real FIR data.",
-  
-    "State": [
-      { "StateName": "Karnataka", "NationalityID": 1, "Active": true }
-    ],
-  
-    "District": [
-      { "DistrictName": "Bengaluru Urban", "StateID": 1, "Active": true },
-      { "DistrictName": "Mysuru", "StateID": 1, "Active": true },
-      { "DistrictName": "Mangaluru", "StateID": 1, "Active": true }
-    ],
-  
-    "UnitType": [
-      { "UnitTypeName": "Police Station", "CityDistState": "City", "Hierarchy": 3, "Active": true },
-      { "UnitTypeName": "Circle Office", "CityDistState": "District", "Hierarchy": 2, "Active": true }
-    ],
-  
-    "Rank": [
-      { "RankName": "Constable", "Hierarchy": 5, "Active": true },
-      { "RankName": "Sub-Inspector", "Hierarchy": 4, "Active": true },
-      { "RankName": "Inspector", "Hierarchy": 3, "Active": true },
-      { "RankName": "DSP", "Hierarchy": 2, "Active": true }
-    ],
-  
-    "Designation": [
-      { "DesignationName": "Investigating Officer", "SortOrder": 1, "Active": true },
-      { "DesignationName": "SHO", "SortOrder": 2, "Active": true }
-    ],
-  
-    "CaseCategory": [
-      { "LookupValue": "FIR" },
-      { "LookupValue": "UDR" },
-      { "LookupValue": "Zero FIR" },
-      { "LookupValue": "PAR" }
-    ],
-  
-    "GravityOffence": [
-      { "LookupValue": "Heinous" },
-      { "LookupValue": "Non-Heinous" }
-    ],
-  
-    "CaseStatusMaster": [
-      { "CaseStatusName": "Under Investigation" },
-      { "CaseStatusName": "Charge Sheeted" },
-      { "CaseStatusName": "Closed" }
-    ],
-  
-    "CrimeHead": [
-      { "CrimeGroupName": "Crimes Against Body", "Active": true },
-      { "CrimeGroupName": "Crimes Against Property", "Active": true }
-    ],
-  
-    "CrimeSubHead": [
-      { "CrimeHeadID": 1, "CrimeHeadName": "Murder", "SeqID": 1 },
-      { "CrimeHeadID": 1, "CrimeHeadName": "Assault", "SeqID": 2 },
-      { "CrimeHeadID": 2, "CrimeHeadName": "Robbery", "SeqID": 1 },
-      { "CrimeHeadID": 2, "CrimeHeadName": "Theft", "SeqID": 2 }
-    ],
-  
-    "Act": [
-      { "ActCode": "IPC", "ActDescription": "Indian Penal Code", "ShortName": "IPC", "Active": true },
-      { "ActCode": "NDPS", "ActDescription": "Narcotic Drugs and Psychotropic Substances Act", "ShortName": "NDPS", "Active": true }
-    ],
-  
-    "Section": [
-      { "SectionCode": "302", "ActCode": "IPC", "SectionDescription": "Murder", "Active": true },
-      { "SectionCode": "379", "ActCode": "IPC", "SectionDescription": "Theft", "Active": true }
-    ]
-  }
+  "_note": "Synthetic data for local/dev seeding only. No real FIR data.",
+
+  "State": [
+    { "StateName": "Karnataka", "NationalityID": 1, "Active": true }
+  ],
+
+  "District": [
+    { "DistrictName": "Bengaluru Urban", "StateID": 1, "Active": true },
+    { "DistrictName": "Mysuru", "StateID": 1, "Active": true },
+    { "DistrictName": "Mangaluru", "StateID": 1, "Active": true }
+  ],
+
+  "UnitType": [
+    { "UnitTypeName": "Police Station", "CityDistState": "City", "Hierarchy": 3, "Active": true },
+    { "UnitTypeName": "Circle Office", "CityDistState": "District", "Hierarchy": 2, "Active": true }
+  ],
+
+  "Rank": [
+    { "RankName": "Constable", "Hierarchy": 5, "Active": true },
+    { "RankName": "Sub-Inspector", "Hierarchy": 4, "Active": true },
+    { "RankName": "Inspector", "Hierarchy": 3, "Active": true },
+    { "RankName": "DSP", "Hierarchy": 2, "Active": true }
+  ],
+
+  "Designation": [
+    { "DesignationName": "Investigating Officer", "SortOrder": 1, "Active": true },
+    { "DesignationName": "SHO", "SortOrder": 2, "Active": true }
+  ],
+
+  "CaseCategory": [
+    { "LookupValue": "FIR" },
+    { "LookupValue": "UDR" },
+    { "LookupValue": "Zero FIR" },
+    { "LookupValue": "PAR" }
+  ],
+
+  "GravityOffence": [
+    { "LookupValue": "Heinous" },
+    { "LookupValue": "Non-Heinous" }
+  ],
+
+  "CaseStatusMaster": [
+    { "CaseStatusName": "Under Investigation" },
+    { "CaseStatusName": "Charge Sheeted" },
+    { "CaseStatusName": "Closed" }
+  ],
+
+  "CrimeHead": [
+    { "CrimeGroupName": "Crimes Against Body", "Active": true },
+    { "CrimeGroupName": "Crimes Against Property", "Active": true }
+  ],
+
+  "CrimeSubHead": [
+    { "CrimeHeadID": 1, "CrimeHeadName": "Murder", "SeqID": 1 },
+    { "CrimeHeadID": 1, "CrimeHeadName": "Assault", "SeqID": 2 },
+    { "CrimeHeadID": 2, "CrimeHeadName": "Robbery", "SeqID": 1 },
+    { "CrimeHeadID": 2, "CrimeHeadName": "Theft", "SeqID": 2 }
+  ],
+
+  "Act": [
+    { "ActCode": "IPC", "ActDescription": "Indian Penal Code", "ShortName": "IPC", "Active": true },
+    { "ActCode": "NDPS", "ActDescription": "Narcotic Drugs and Psychotropic Substances Act", "ShortName": "NDPS", "Active": true }
+  ],
+
+  "Section": [
+    { "SectionCode": "302", "ActCode": "IPC", "SectionDescription": "Murder", "Active": true },
+    { "SectionCode": "379", "ActCode": "IPC", "SectionDescription": "Theft", "Active": true }
+  ]
+}

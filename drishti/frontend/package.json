@@ -5,6 +5,18 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "cytoscape": "^3.30.0"
+    "react-scripts": "5.0.1",
+    "cytoscape": "^3.30.0",
+    "leaflet": "^1.9.4",
+    "chart.js": "^4.4.3",
+    "react-chartjs-2": "^5.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   }
 }

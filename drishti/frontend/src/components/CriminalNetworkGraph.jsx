@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import cytoscape from 'cytoscape';
 import { getPersonNetwork, getCaseNetwork } from '../api/networkService';
+import styles from './CriminalNetworkGraph.module.css';
 
 /**
  * CriminalNetworkGraph
@@ -44,6 +45,14 @@ export default function CriminalNetworkGraph({ mode = 'person', id, depth = 2 })
           }))
         ];
 
+        // Cytoscape needs its style values as a JS config, not a linked
+        // stylesheet — it can't read .module.css classes directly. To
+        // still keep colors defined in one place, pull the values from
+        // the shared CSS custom properties (styles/variables.css) at
+        // render time rather than hardcoding hex codes here.
+        const rootStyle = getComputedStyle(document.documentElement);
+        const cssVar = (name, fallback) => rootStyle.getPropertyValue(name).trim() || fallback;
+
         cy = cytoscape({
           container: containerRef.current,
           elements,
@@ -51,9 +60,10 @@ export default function CriminalNetworkGraph({ mode = 'person', id, depth = 2 })
             {
               selector: 'node',
               style: {
-                'background-color': '#b91c1c',
+                'background-color': cssVar('--color-flag', '#e4572e'),
                 label: 'data(label)',
-                color: '#1f2937',
+                color: cssVar('--color-text-hi', '#e8eaed'),
+                'font-family': 'IBM Plex Mono, monospace',
                 'font-size': 10,
                 'text-valign': 'bottom',
                 'text-margin-y': 4
@@ -61,17 +71,18 @@ export default function CriminalNetworkGraph({ mode = 'person', id, depth = 2 })
             },
             {
               selector: `node[id="${id}"]`,
-              style: { 'background-color': '#1d4ed8', width: 34, height: 34 }
+              style: { 'background-color': cssVar('--color-accent', '#f0a202'), width: 34, height: 34 }
             },
             {
               selector: 'edge',
               style: {
-                width: 2,
-                'line-color': '#9ca3af',
+                width: 1.5,
+                'line-color': cssVar('--color-border-strong', '#3a4350'),
                 'curve-style': 'bezier',
                 label: 'data(label)',
+                'font-family': 'Inter, sans-serif',
                 'font-size': 8,
-                color: '#6b7280'
+                color: cssVar('--color-text-lo', '#8b93a1')
               }
             }
           ],
@@ -94,12 +105,10 @@ export default function CriminalNetworkGraph({ mode = 'person', id, depth = 2 })
 
   return (
     <div>
-      {loading && <p>Loading network…</p>}
-      {error && <p style={{ color: '#b91c1c' }}>Failed to load network: {error}</p>}
-      <div
-        ref={containerRef}
-        style={{ width: '100%', height: 480, border: '1px solid #e5e7eb', borderRadius: 8 }}
-      />
+      <p className={styles.sectionLabel}>Network</p>
+      {loading && <p style={{ color: 'var(--color-text-lo)' }}>Loading network…</p>}
+      {error && <p className={styles.errorText}>Failed to load network: {error}</p>}
+      <div ref={containerRef} className={styles.graphContainer} />
     </div>
   );
 }

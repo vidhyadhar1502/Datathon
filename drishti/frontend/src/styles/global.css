@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import './variables.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-hi);
+  background: var(--color-bg);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+}
+
+/* Anything that IS data — case numbers, coordinates, timestamps, IDs —
+   should read like a case-file stamp, not body copy. Apply .mono in
+   component markup wherever real data (not labels) is rendered. */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}

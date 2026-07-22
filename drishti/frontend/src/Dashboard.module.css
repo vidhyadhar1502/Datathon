@@ -1,0 +1,78 @@
+.page {
+  font-family: var(--font-body);
+  padding: var(--space-lg) var(--space-lg) 0;
+  max-width: 960px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-md);
+  margin-bottom: 0;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-hi);
+  margin: 0;
+}
+
+.wordmark span {
+  color: var(--color-accent);
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Folder-tab navigation: each tab is a trapezoid via clip-path, sitting
+   in the darker "cabinet" strip above the panel. The active tab is
+   taller and lighter, so it visually pulls forward and fuses with the
+   panel below it — pulling a case file to the front of the drawer. */
+.tabStrip {
+  display: flex;
+  gap: 2px;
+  background: var(--color-surface-tab);
+  padding: 8px 8px 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 10px 20px 8px;
+  border: none;
+  background: var(--color-surface);
+  color: var(--color-text-lo);
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+  transition: none;
+}
+
+.tabActive {
+  composes: tab;
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  padding-top: 12px;
+  margin-top: -4px;
+}
+
+.panel {
+  background: var(--color-surface-raised);
+  border-radius: 0 6px 6px 6px;
+  padding: var(--space-lg);
+  min-height: 420px;
+}

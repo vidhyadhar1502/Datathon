@@ -1,0 +1,10 @@
+{
+  "name": "data-service",
+  "version": "1.0.0",
+  "description": "DRISHTI data layer — Advanced I/O Function for CaseMaster CRUD over Catalyst Data Store",
+  "main": "index.js",
+  "dependencies": {
+    "zcatalyst-sdk-node": "^3.1.0",
+    "express": "^4.19.2"
+  }
+}

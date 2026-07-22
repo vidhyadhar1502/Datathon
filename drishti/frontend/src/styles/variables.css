@@ -1,0 +1,41 @@
+/**
+ * DRISHTI — shared design tokens.
+ * "Case file cabinet" direction: ops-room dark surface, evidence-tag
+ * amber as the primary accent, case-flag red reserved for hotspots/
+ * critical states only. See docs/frontend/design.md for the rationale.
+ */
+:root {
+  --color-bg: #0d1117;
+  --color-surface: #161b22;
+  --color-surface-raised: #1f2630;
+  --color-surface-tab: #11161d;
+
+  --color-accent: #f0a202;
+  --color-accent-contrast: #1a1200;
+  --color-flag: #e4572e;
+  --color-flag-contrast: #2a0e05;
+  --color-success: #3ddc97;
+
+  --color-text-hi: #e8eaed;
+  --color-text-lo: #8b93a1;
+  --color-text-faint: #5a6270;
+
+  --color-border: #2a313c;
+  --color-border-strong: #3a4350;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 22px;
+}

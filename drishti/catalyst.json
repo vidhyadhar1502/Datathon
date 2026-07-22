@@ -1,0 +1,22 @@
+{
+  "functions": {
+    "source": "backend/functions",
+    "targets": [
+      "data-service",
+      "case-service",
+      "auth-service",
+      "analytics-service",
+      "hotspot-refresh-job",
+      "network-service",
+      "assistant-service",
+      "report-service"
+    ],
+    "ignore": [
+      "node_modules",
+      "*.log"
+    ]
+  },
+  "client": {
+    "source": "frontend"
+  }
+}

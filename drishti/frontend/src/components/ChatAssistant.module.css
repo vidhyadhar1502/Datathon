@@ -1,0 +1,99 @@
+.sectionLabel {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-hi);
+  margin: 0 0 10px;
+}
+
+.chatBox {
+  max-width: 480px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.messages {
+  min-height: 240px;
+  max-height: 360px;
+  overflow-y: auto;
+  margin-bottom: var(--space-sm);
+}
+
+.messageRow {
+  margin: 6px 0;
+}
+
+.messageRowUser {
+  composes: messageRow;
+  text-align: right;
+}
+
+.messageRowAssistant {
+  composes: messageRow;
+  text-align: left;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-md);
+}
+
+.bubbleUser {
+  composes: bubble;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.bubbleAssistant {
+  composes: bubble;
+  background: var(--color-surface-raised);
+  color: var(--color-text-hi);
+  border-left: 2px solid var(--color-border-strong);
+}
+
+.thinking {
+  composes: mono from global;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+}
+
+.inputRow {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.textInput {
+  flex: 1;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-tab);
+  color: var(--color-text-hi);
+}
+
+.sendButton {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.micButton {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-tab);
+  color: var(--color-text-hi);
+}

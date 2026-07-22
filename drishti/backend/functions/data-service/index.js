@@ -32,6 +32,44 @@ function handleError(res, err) {
   });
 }
 
+/**
+ * Resolves the lookup IDs on a set of CaseMaster rows (status, crime
+ * sub-head, gravity) into human-readable names, so the frontend never has
+ * to show a bare numeric ID as if it meant something on its own. Done as
+ * a batch lookup rather than a JOIN, since ZCQL's JOIN support isn't
+ * confirmed — this stays correct regardless.
+ */
+async function enrichCases(zcql, cases) {
+  if (!cases.length) return cases;
+
+  const statusIds = [...new Set(cases.map(c => c.CaseStatusID).filter(Boolean))];
+  const subHeadIds = [...new Set(cases.map(c => c.CrimeMinorHeadID).filter(Boolean))];
+  const gravityIds = [...new Set(cases.map(c => c.GravityOffenceID).filter(Boolean))];
+
+  const [statusRows, subHeadRows, gravityRows] = await Promise.all([
+    statusIds.length
+      ? zcql.executeZCQLQuery(`SELECT CaseStatusID, CaseStatusName FROM CaseStatusMaster WHERE CaseStatusID IN (${statusIds.join(',')})`)
+      : [],
+    subHeadIds.length
+      ? zcql.executeZCQLQuery(`SELECT CrimeSubHeadID, CrimeHeadName FROM CrimeSubHead WHERE CrimeSubHeadID IN (${subHeadIds.join(',')})`)
+      : [],
+    gravityIds.length
+      ? zcql.executeZCQLQuery(`SELECT GravityOffenceID, LookupValue FROM GravityOffence WHERE GravityOffenceID IN (${gravityIds.join(',')})`)
+      : []
+  ]);
+
+  const statusMap = Object.fromEntries(statusRows.map(r => [r.CaseStatusMaster.CaseStatusID, r.CaseStatusMaster.CaseStatusName]));
+  const subHeadMap = Object.fromEntries(subHeadRows.map(r => [r.CrimeSubHead.CrimeSubHeadID, r.CrimeSubHead.CrimeHeadName]));
+  const gravityMap = Object.fromEntries(gravityRows.map(r => [r.GravityOffence.GravityOffenceID, r.GravityOffence.LookupValue]));
+
+  return cases.map(c => ({
+    ...c,
+    CaseStatusName: statusMap[c.CaseStatusID] || 'Unknown',
+    CrimeTypeName: subHeadMap[c.CrimeMinorHeadID] || 'Unclassified',
+    GravityName: gravityMap[c.GravityOffenceID] || null
+  }));
+}
+
 // ---- routes ------------------------------------------------------------
 
 /**
@@ -108,8 +146,10 @@ app.get('/cases/:id', async (req, res) => {
       zcql.executeZCQLQuery(`SELECT * FROM ActSectionAssociation WHERE CaseMasterID = ${id}`)
     ]);
 
+    const [enrichedCase] = await enrichCases(zcql, [caseResult[0].CaseMaster]);
+
     res.status(200).json({
-      caseMaster: caseResult[0].CaseMaster,
+      caseMaster: enrichedCase,
       complainants: complainants.map(r => r.ComplainantDetails),
       victims: victims.map(r => r.Victim),
       accused: accusedList.map(r => r.Accused),
@@ -140,7 +180,8 @@ app.get('/cases', async (req, res) => {
     query += ` ORDER BY CREATEDTIME DESC LIMIT ${limit}`;
 
     const result = await zcql.executeZCQLQuery(query);
-    res.status(200).json({ cases: result.map(r => r.CaseMaster) });
+    const enriched = await enrichCases(zcql, result.map(r => r.CaseMaster));
+    res.status(200).json({ cases: enriched });
   } catch (err) {
     handleError(res, err);
   }

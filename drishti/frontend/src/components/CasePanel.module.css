@@ -1,0 +1,274 @@
+/* ---- shared section label, matching the rest of the design system ---- */
+.sectionLabel {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-hi);
+  margin: 0 0 10px;
+}
+
+/* ---- quick stats strip ---- */
+.statsStrip {
+  display: flex;
+  gap: 1px;
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.statCell {
+  flex: 1;
+  background: var(--color-surface);
+  padding: 10px 14px;
+}
+
+.statValue {
+  composes: mono from global;
+  font-size: 22px;
+  color: var(--color-text-hi);
+  display: block;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---- search + filter bar ---- */
+.toolbar {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-tab);
+  color: var(--color-text-hi);
+  font-size: var(--font-size-md);
+}
+
+.statusSelect {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-tab);
+  color: var(--color-text-hi);
+  font-size: var(--font-size-sm);
+}
+
+/* ---- layout ---- */
+.layout {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.listColumn {
+  flex: 1;
+  max-width: 280px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+/* File-drawer card: left accent bar (severity-colored), title = crime
+   type + status, crime number demoted to a mono subtitle. */
+.caseCard {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border: none;
+  border-left: 3px solid var(--color-border-strong);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.caseCardActive {
+  composes: caseCard;
+  border-left-color: var(--color-accent);
+  background: var(--color-surface-tab);
+}
+
+.caseCardHeinous {
+  border-left-color: var(--color-flag);
+}
+
+.caseCardTitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-hi);
+  display: block;
+}
+
+.caseCardMeta {
+  composes: mono from global;
+  font-size: 11px;
+  color: var(--color-text-faint);
+  display: block;
+  margin-top: 3px;
+}
+
+.emptyState {
+  color: var(--color-text-lo);
+  font-size: var(--font-size-sm);
+}
+
+/* ---- status badges ---- */
+.badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badgeInvestigation {
+  composes: badge;
+  background: rgba(240, 162, 2, 0.15);
+  color: var(--color-accent);
+}
+
+.badgeChargesheeted {
+  composes: badge;
+  background: rgba(61, 220, 151, 0.15);
+  color: var(--color-success);
+}
+
+.badgeClosed {
+  composes: badge;
+  background: rgba(139, 147, 161, 0.15);
+  color: var(--color-text-lo);
+}
+
+.badgeHeinous {
+  composes: badge;
+  background: rgba(228, 87, 46, 0.15);
+  color: var(--color-flag);
+  margin-left: 6px;
+}
+
+/* ---- detail column ---- */
+.detailColumn {
+  flex: 2;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.detailTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-text-hi);
+  margin: 0;
+}
+
+.detailCrimeNo {
+  composes: mono from global;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-md);
+}
+
+.briefFacts {
+  font-size: var(--font-size-md);
+  color: var(--color-text-lo);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  padding: 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--color-border-strong);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.detailBlock {
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.detailBlockLabel {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin: 0 0 6px;
+}
+
+.detailBlockRow {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-hi);
+  padding: 3px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.detailBlockRow:first-of-type {
+  border-top: none;
+}
+
+.actionRow {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.reportButton {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.networkButton {
+  composes: reportButton;
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-hi);
+}
+
+.reportStatus {
+  composes: mono from global;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+  margin-top: var(--space-xs);
+}
+
+.errorText {
+  color: var(--color-flag);
+  font-size: var(--font-size-sm);
+}
